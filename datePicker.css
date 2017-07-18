@@ -1,0 +1,262 @@
+/**
+ * @version: 0.1
+ * @author: lazzy1993
+ * @date: 2017-07-18
+ */
+#lazzy-date-picker {
+    position: absolute;
+    width: 8.4em;
+    height: 11.5em;
+    border: .5em solid transparent;
+    border-radius: .4em;
+    margin-top: .6em;/*下移.6em,露出小三角*/
+    /*box-shadow: 0 0 .5em #008686 ;*/
+/*             padding: 10px;
+    outline: rgba(0,134,134,.5) solid 10px; */
+}
+*{
+    /*设置整个控件的基础单位，不能低于14px
+     建议使用大于16px的数值,以获得更好的展示效果
+    */
+    font-size: 20px;
+}
+#lazzy-date-picker ul{
+    margin: 0;
+    padding: 0;
+}
+/*重设字体的大小*/
+#lazzy-date-picker .lazzy-date-text{
+    display: block;
+    font-size: .5em;
+}
+/*设置面板的背景色*/
+#lazzy-date-picker {
+    background-color: rgba(134,134,134,.1);
+}
+.lazzy-marking-triangle {
+    border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(134,134,134,.1) rgba(0,0,0,0) ;
+}
+/*上面的小三角*/
+.lazzy-marking-triangle {
+    position: absolute;
+    top: -1.4em; 
+    left: 1em;
+    padding: 0;
+    width: 0;
+    height: 0;
+    margin: .3em .5em;
+    border-width: 0 .5em .6em .5em;
+    border-style: solid;
+}
+/*统一设置li没有前面小圆点而且为行内块*/
+#lazzy-date-picker ul {
+    margin: 0;
+    padding: 0;
+}
+#lazzy-date-picker li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+    float: left;
+    text-align: center;
+}
+
+/*隐藏内容的样式*/
+.lazzy-hidden {
+    display: none;
+}
+/*其他月份的日期设置字体颜色为浅灰色*/
+.lazzy-last-month, .lazzy-next-month {
+    color: #ccc;
+}
+.lazzy-year, .lazzy-month, .lazzy-weekedy, .lazzy-day, .lazzy-time {
+    margin: 0 auto;
+    padding: 0;
+}
+/*使用内投影模拟背景色，突出显示当前日期*/
+#lazzy-date-picker .lazzy-current {
+    box-shadow: 0 0 3em rgba(0,0,123,.3) inset;
+}
+/*当前选中的日期*/
+#lazzy-date-picker .lazzy-chosen {
+    box-shadow: 0 0 3em rgba(134,0,134,.3) inset;
+}
+
+/*年份和月份的样式*/
+.lazzy-year {
+    height: 1.4em;
+    line-height: 1.4em;
+    text-align: center;
+    /*background-color: rgba(199,199,199,.5);*/
+}
+.lazzy-year .lazzy-date-text{
+    width: 8em;
+    margin: 0 auto;
+}
+.lazzy-year .lazzy-date-text:hover {
+    cursor: pointer;
+    color: rgba(0,134,134,.5);
+}
+
+
+/*使用边框做出的三角形*/
+.lazzy-left-triangle,.lazzy-right-triangle {
+    padding: 0;
+    width: 0;
+    height: 0;
+    margin: .3em .5em;
+    border-width: .4em .5em;
+    border-style: solid;
+}
+.lazzy-left-triangle {
+    border-color: rgba(0,0,0,0) rgba(0,0,0,.5) rgba(0,0,0,0) rgba(0,0,0,0) ;
+    float: left;
+}
+.lazzy-left-triangle:hover{
+     border-color: rgba(0,0,0,0) rgba(0,134,134,.5) rgba(0,0,0,0) rgba(0,0,0,0) ;
+    cursor: pointer;
+}
+.lazzy-right-triangle {
+    border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,.5) ;
+    float: right;
+}
+.lazzy-right-triangle:hover{
+     border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,134,134,.5) ;
+     cursor: pointer;
+}
+
+
+/*月份概览样式*/
+.lazzy-month {
+    width: 8.4em;
+    height: 7.2em;
+    margin: .5em auto; 
+    /*ackground-color: red;*/
+}        
+/*设置透明边框维持布局并使用边框内投影模拟边框*/
+.lazzy-month li {
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.8em;
+    border-width: 0.3em 0.15em;
+    border-style: solid;
+    border-radius: 50%;
+    border-color: transparent;
+    box-shadow: 0 0 1px transparent inset;
+}
+
+.lazzy-month li:hover {
+    box-shadow: 0 0 1px black inset;
+    cursor: pointer;
+}
+
+
+/*设置“星期”和“天”的样式*/
+.lazzy-weekeday {
+    margin: .2em 0;
+    height: 1.4em;
+    line-height: 1.4em;
+    text-align: center;
+    /*background-color: rgba(0,199,199,.5);*/
+    /*单边投影*/
+    box-shadow: 0 1px 0 #ccc ;
+}
+
+.lazzy-weekeday li{
+    width:1.2em;
+}
+
+.lazzy-day {
+    width: 8.4em;
+    height: 6.6em;
+}
+.lazzy-day li {
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    border-width: 0.05em 0.1em;
+    border-style: solid;
+    border-radius: 50%;
+    border-color: transparent;
+    /*box-shadow: 0 0 1px transparent inset;*/
+}
+
+.lazzy-day li:hover {
+    box-shadow: 0 0 1px black inset;
+    color: rgba(0,134,134,.5);
+    cursor: pointer;
+}
+
+/*时间选择器*/
+.lazzy-time {
+    width: 8.4em;
+    height: 1.4em;
+    /*background-color: #ccc;*/
+    /*透明上边框，单边投影模拟边框*/
+    margin-top: .3em;
+/*             border-top: 10px solid transparent;
+    box-shadow: 0 -1px 0 #ccc ; */
+}
+
+.lazzy-time-hours, .lazzy-time-minutes, .lazzy-time-seconds {
+    width: 2em;
+    float: left;
+    height: 1.4em;
+    margin: 0 .2em;
+    padding: 0;
+/*     overflow: hidden; */
+}
+.lazzy-time input {
+    padding: .2em .6em .2em .2em;
+    margin:  0 ;
+    height: 1em;
+    width: 1.7em;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    float: left;
+    text-align: center;
+    outline: none;
+    background-color: transparent;
+}
+
+.lazzy-hidden-triangle{
+    width: .6em;
+    height: 1.4em;
+}
+
+.lazzy-top-triangle,.lazzy-bottom-triangle {
+    padding: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+/*     float: left; */
+    margin: .25em 0;
+    position: relative;
+    left: 2em;
+}
+.lazzy-top-triangle {
+    border-width: 0 .2em .4em .2em;
+    border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,.2) rgba(0,0,0,0) ;
+}
+.lazzy-top-triangle:hover {
+    border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,134,134,.5) rgba(0,0,0,0) ;
+    cursor: pointer;
+}
+.lazzy-bottom-triangle {
+    border-width: .4em .2em 0 .2em;
+    border-color: rgba(0,0,0,.2) rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) ;
+}
+.lazzy-bottom-triangle:hover {
+    border-color: rgba(0,134,134,.5) rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) ;
+    cursor: pointer;
+}
+
+.lazzy-separator {
+    display: inline-block;
+    height: 1.4em;
+    width:.4em;
+    float: left;
+    position: relative;
+    left: .3em;
+}
