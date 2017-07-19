@@ -8,7 +8,7 @@
 
 // 支持IE8+
 // 给input元素添加"lazzy-datePicker"类名即可实现将普通的input元素转换成带日期选择器的时间输入框
-// 在第976、977、978行对目标函数的鼠标形状以及字体做了设置，同时在加载时清空了内容
+// 在第982~984行对目标函数的鼠标形状以及字体做了设置，同时在加载时清空了内容
 function addDatePicker(event, classname){
     "use strict"
     var classname = classname || "lazzy-datePicker",
@@ -677,7 +677,7 @@ function addDatePicker(event, classname){
         initThePicker = function initThePicker(pickerName, targetEle) {
             var datePicker = document.getElementById("lazzy-date-picker"),
                 theTime, // 初始化日期选择器的时间
-                lazzyYear,lazzyTime,spanArr,inputArr,
+                lazzyYear, lazzyMonth, lazzyTime, spanArr, inputArr,
                 str;
 
             // 如果传入了pickerName，则使用addDatePicker.dates中pickerName对应日期选择器中存储的chosenDate
@@ -707,6 +707,12 @@ function addDatePicker(event, classname){
             inputArr[0].value = (theTime.getHours() < 10) ? ("0" + theTime.getHours()) : theTime.getHours();
             inputArr[1].value = (theTime.getMinutes() < 10) ? ("0" + theTime.getMinutes()) : theTime.getMinutes();
             inputArr[2].value = (theTime.getSeconds() < 10) ? ("0" + theTime.getSeconds()) : theTime.getSeconds();
+            
+            // 如果上次隐藏时日期选择器展示的是月份视图，则触发一次顶部年月的单击事件，展示日期视图
+            lazzyMonth = gClass("lazzy-month")[0];
+            if (lazzyMonth.className == "lazzy-month") {
+                spanArr[0].click();         // 触发了一次真正的click事件，而不是简单的调用onclick的方法。
+            }
 
             // 获得给定日期的年月并格式化成字符串的函数
             function formatMonth(date) {
