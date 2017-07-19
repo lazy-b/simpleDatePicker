@@ -1,17 +1,17 @@
 /**
  * @version: 0.1
- * @author: lazzy1993
+ * @author: lazy1993
  * @date: 2017-07-18
  * @copyright:  All rights reserved.
  * @website: http://lazy1993.github.io/simpleDatePicker
  */
 
 // 支持IE8+
-// 给input元素添加"lazzy-datePicker"类名即可实现将普通的input元素转换成带日期选择器的时间输入框
+// 给input元素添加"lazy-datePicker"类名即可实现将普通的input元素转换成带日期选择器的时间输入框
 // 在addDatePicker.dates中的第1161~1165行对目标函数的鼠标形状以及字体做了设置，同时在加载时清空了内容
 function addDatePicker(event, classname){
     "use strict"
-    var classname = classname || "lazzy-datePicker",
+    var classname = classname || "lazy-datePicker",
         gClass, gTag, addHandler, showDataPicker, hideDatePicker,  // 一些辅助函数 
         targetArr,
         config,                 // 一点配置文件
@@ -86,33 +86,33 @@ function addDatePicker(event, classname){
 
             // 创建datePicker容器
             datePicker = c("div");
-            datePicker.setAttribute("id","lazzy-date-picker");
-            datePicker.className = "lazzy-hidden";
+            datePicker.setAttribute("id","lazy-date-picker");
+            datePicker.className = "lazy-hidden";
             // 将最终得到的时间选择器主结构挂在文档碎片上
             f.appendChild(datePicker);
 
             // 创建顶部引导三角形
             parentDiv = c("div");
-            parentDiv.className = "lazzy-marking-triangle";
+            parentDiv.className = "lazy-marking-triangle";
             datePicker.appendChild(parentDiv);
 
             // 创建头部年月部分
             parentDiv = c("div");
-            parentDiv.className = "lazzy-year";
+            parentDiv.className = "lazy-year";
             datePicker.appendChild(parentDiv);
             childDiv = c("div");
-            childDiv.className = "lazzy-left-triangle";
+            childDiv.className = "lazy-left-triangle";
             parentDiv.appendChild(childDiv);
             childDiv = c("div");
-            childDiv.className = "lazzy-right-triangle";
+            childDiv.className = "lazy-right-triangle";
             parentDiv.appendChild(childDiv);
             span = c("span");
-            span.className = "lazzy-date-text";
+            span.className = "lazy-date-text";
             parentDiv.appendChild(span);
 
             // 创建月份模块
             parentDiv = c("div");
-            parentDiv.className = "lazzy-month lazzy-hidden";
+            parentDiv.className = "lazy-month lazy-hidden";
             datePicker.appendChild(parentDiv);
             ul = c("ul");
             parentDiv.appendChild(ul);
@@ -121,7 +121,7 @@ function addDatePicker(event, classname){
                 li = c("li");
                 ul.appendChild(li);
                 span = c("span");
-                span.className = "lazzy-date-text";
+                span.className = "lazy-date-text";
                 li.appendChild(span);
                 str = monthArry[i] +"月";
                 text = document.createTextNode(str);
@@ -130,7 +130,7 @@ function addDatePicker(event, classname){
 
             // 创建每周的星期
             parentDiv = c("div");
-            parentDiv.className = "lazzy-weekeday";
+            parentDiv.className = "lazy-weekeday";
             datePicker.appendChild(parentDiv);
             ul = c("ul");
             parentDiv.appendChild(ul);
@@ -139,7 +139,7 @@ function addDatePicker(event, classname){
                 li = c("li");
                 ul.appendChild(li);
                 span = c("span");
-                span.className = "lazzy-date-text";
+                span.className = "lazy-date-text";
                 li.appendChild(span);
                 str = weekArry[i];
                 text = document.createTextNode(str);
@@ -148,7 +148,7 @@ function addDatePicker(event, classname){
 
             // 创建每月的天
             parentDiv = c("div");
-            parentDiv.className = "lazzy-day";
+            parentDiv.className = "lazy-day";
             datePicker.appendChild(parentDiv);
             ul = c("ul");
             parentDiv.appendChild(ul);
@@ -157,64 +157,64 @@ function addDatePicker(event, classname){
                 li = c("li");
                 ul.appendChild(li);
                 span = c("span");
-                span.className = "lazzy-date-text";
+                span.className = "lazy-date-text";
                 li.appendChild(span);
             }
 
             // 创建时间选择模块
             time = c("div");
-            time.className = "lazzy-time";
+            time.className = "lazy-time";
             datePicker.appendChild(time);
             // 小时部分
             parentDiv = c("div");
-            parentDiv.className = "lazzy-time-hours";
+            parentDiv.className = "lazy-time-hours";
             time.appendChild(parentDiv);
             input = c("input");
             input.setAttribute("type","text");
             parentDiv.appendChild(input);
             childDiv = c("div");
-            childDiv.className = "lazzy-top-triangle";
+            childDiv.className = "lazy-top-triangle";
             parentDiv.appendChild(childDiv);
             childDiv = c("div");
-            childDiv.className = "lazzy-bottom-triangle";
+            childDiv.className = "lazy-bottom-triangle";
             parentDiv.appendChild(childDiv);
             // 分隔符
             span = c("span");
-            span.className = "lazzy-separator";
+            span.className = "lazy-separator";
             time.appendChild(span);
             text = document.createTextNode(separator);
             span.appendChild(text);
             // 分钟部分
             parentDiv = c("div");
-            parentDiv.className = "lazzy-time-minutes";
+            parentDiv.className = "lazy-time-minutes";
             time.appendChild(parentDiv);
             input = c("input");
             input.setAttribute("type","text");
             parentDiv.appendChild(input);
             childDiv = c("div");
-            childDiv.className = "lazzy-top-triangle";
+            childDiv.className = "lazy-top-triangle";
             parentDiv.appendChild(childDiv);
             childDiv = c("div");
-            childDiv.className = "lazzy-bottom-triangle";
+            childDiv.className = "lazy-bottom-triangle";
             parentDiv.appendChild(childDiv);
             // 分隔符
             span = c("span");
-            span.className = "lazzy-separator";
+            span.className = "lazy-separator";
             time.appendChild(span);
             text = document.createTextNode(separator);
             span.appendChild(text);
             // 秒钟部分
             parentDiv = c("div");
-            parentDiv.className = "lazzy-time-seconds";
+            parentDiv.className = "lazy-time-seconds";
             time.appendChild(parentDiv);
             input = c("input");
             input.setAttribute("type","text");
             parentDiv.appendChild(input);
             childDiv = c("div");
-            childDiv.className = "lazzy-top-triangle";
+            childDiv.className = "lazy-top-triangle";
             parentDiv.appendChild(childDiv);
             childDiv = c("div");
-            childDiv.className = "lazzy-bottom-triangle";
+            childDiv.className = "lazy-bottom-triangle";
             parentDiv.appendChild(childDiv);
 
             // 使用文档碎片将日期选择器一次性加载到body元素下
@@ -227,12 +227,12 @@ function addDatePicker(event, classname){
 
         // 给日期选择器绑定相应事件处理程序，增加日期选择器的交互功能
         bindDateEvent = function bindDateEvent() {
-            var datePicker = document.getElementById("lazzy-date-picker"),
-                year = gClass("lazzy-year",datePicker)[0],
-                month = gClass("lazzy-month",datePicker)[0],
-                weekeday = gClass("lazzy-weekeday",datePicker)[0],
-                day = gClass("lazzy-day",datePicker)[0],
-                time = gClass("lazzy-time",datePicker)[0],
+            var datePicker = document.getElementById("lazy-date-picker"),
+                year = gClass("lazy-year",datePicker)[0],
+                month = gClass("lazy-month",datePicker)[0],
+                weekeday = gClass("lazy-weekeday",datePicker)[0],
+                day = gClass("lazy-day",datePicker)[0],
+                time = gClass("lazy-time",datePicker)[0],
                 inputArr = gTag("input", time); // 获得三个输入框的数组列表
 
             // 下方四个click事件也可以同时委托给datePicker元素，但是考虑代理层数过多，暂不考虑
@@ -241,27 +241,27 @@ function addDatePicker(event, classname){
             addHandler(year, "click", function(event) {
                 var event = event || window.event,
                     eventTag = event.srcElement || event.target,
-                    datePicker = document.getElementById("lazzy-date-picker"),
-                    month = gClass("lazzy-month",datePicker)[0];
+                    datePicker = document.getElementById("lazy-date-picker"),
+                    month = gClass("lazy-month",datePicker)[0];
 
-                if (month.className == "lazzy-month") {// 月份列表被展示
+                if (month.className == "lazy-month") {// 月份列表被展示
 
                     // 进行事件代理
-                    if (eventTag.className == "lazzy-date-text") {
+                    if (eventTag.className == "lazy-date-text") {
                         // 设置顶部文本指示当年当月
                         toggleTopText("currentMonth");
                         // 初始化日期视图
                         initTheDays();
                         // 然后显示日期列表视图
                         toggleMonthDisplay("hide");
-                    } else if (eventTag.className == "lazzy-left-triangle") {
+                    } else if (eventTag.className == "lazy-left-triangle") {
                         // 更改存储的日期为去年对应日期
                         showDataPicker.info.setChosenDate("lastYear");
                         // 设置顶部文本指示去年
                         toggleTopText("lastYear");
                         // 初始化月份列表视图
                         initTheMonths();
-                    } else if (eventTag.className == "lazzy-right-triangle") {
+                    } else if (eventTag.className == "lazy-right-triangle") {
                         // 更改存储的日期为明年对应日期
                         showDataPicker.info.setChosenDate("nextYear");
                         // 设置顶部文本指示明年
@@ -269,24 +269,24 @@ function addDatePicker(event, classname){
                         // 初始化月份列表视图
                         initTheMonths();
                     }
-                } else if (month.className == "lazzy-month lazzy-hidden") {// 月份列表被隐藏
+                } else if (month.className == "lazy-month lazy-hidden") {// 月份列表被隐藏
 
                     // 进行事件代理
-                    if (eventTag.className == "lazzy-date-text") {
+                    if (eventTag.className == "lazy-date-text") {
                         // 设置顶部文本指示当年
                         toggleTopText("currentYear");
                         // 初始化月份列表视图
                         initTheMonths();
                         // 然后显示月份列表视图
                         toggleMonthDisplay("show");
-                    } else if (eventTag.className == "lazzy-left-triangle") {
+                    } else if (eventTag.className == "lazy-left-triangle") {
                         // 更改存储的日期为上个月的对应日期
                         showDataPicker.info.setChosenDate("lastMonth");
                         // 设置顶部文本指示上一个月
                         toggleTopText("lastMonth");
                         // 初始化日期视图
                         initTheDays();
-                    } else if (eventTag.className == "lazzy-right-triangle") {
+                    } else if (eventTag.className == "lazy-right-triangle") {
                         // 更改存储的日期为下个月的对应日期
                         showDataPicker.info.setChosenDate("nextMonth");
                         // 设置顶部文本指示下一个月
@@ -305,7 +305,7 @@ function addDatePicker(event, classname){
                     n;
 
                 // 进行事件代理
-                if (eventTag.className == "lazzy-date-text") {
+                if (eventTag.className == "lazy-date-text") {
                     // 更改存储的日期为该span对应的月份 
                     n = parseInt(eventTag.innerHTML,0) - 1;
                     showDataPicker.info.setChosenDate("month",n);
@@ -329,7 +329,7 @@ function addDatePicker(event, classname){
 
                 // 进行事件代理
                 // 也可以代理li，但是为了整个函数的一致性，均代理span
-                if (eventTag.parentNode.className == "lazzy-last-month") {
+                if (eventTag.parentNode.className == "lazy-last-month") {
                     // 先将存储的日期月份减一
                     showDataPicker.info.setChosenDate("lastMonth");
                     // 再更改存储的日期为该span对应的日期 
@@ -341,7 +341,7 @@ function addDatePicker(event, classname){
 
                     // 初始化日期视图
                     initTheDays();
-                } else if (eventTag.parentNode.className == "lazzy-next-month") {
+                } else if (eventTag.parentNode.className == "lazy-next-month") {
                     // 先将存储的日期月份减一
                     showDataPicker.info.setChosenDate("nextMonth");
                     // 再更改存储的日期为该span对应的日期 
@@ -353,7 +353,7 @@ function addDatePicker(event, classname){
 
                     // 初始化日期视图
                     initTheDays();
-                } else if (eventTag.className == "lazzy-date-text") {
+                } else if (eventTag.className == "lazy-date-text") {
                     // 更改存储的日期为该span对应的日期 
                     n = parseInt(eventTag.innerHTML,0);
                     showDataPicker.info.setChosenDate("date",n);
@@ -378,16 +378,16 @@ function addDatePicker(event, classname){
                     oDate, clock;
 
                 // 连续触发点击事件时（取消前一个定时器）延迟更新（存储的时间）
-                if (showDataPicker.info.getClock()) {
+                if (typeof showDataPicker.info.getClock() !== "undefined") {
                     clearTimeout(showDataPicker.info.getClock());
                 }
 
                 // 进行事件代理
                 // 对时分秒进行加减的逻辑稍微有些不同
-                if (eventTag.parentNode.className == "lazzy-time-hours") {
+                if (eventTag.parentNode.className == "lazy-time-hours") {
 
                     // 二次代理
-                    if  (eventTag.className == "lazzy-top-triangle") {
+                    if  (eventTag.className == "lazy-top-triangle") {
 
                         // 点击上三角，当小于23点的时候直接做加1操作，当等于23时重置为0点，同时effectDates加1
                         if (hours < 23) {
@@ -397,7 +397,7 @@ function addDatePicker(event, classname){
                             effectDates += 1;
                             inputArr[0].value = "00";
                         }
-                    } else if (eventTag.className == "lazzy-bottom-triangle") {
+                    } else if (eventTag.className == "lazy-bottom-triangle") {
 
                         // 点击下三角，当大于0点的时候直接做减1操作，当等于0时重置为23点，同时effectDates减1
                         if (hours > 0) {
@@ -408,10 +408,10 @@ function addDatePicker(event, classname){
                             inputArr[0].value = 23;
                         }
                     }
-                } else if (eventTag.parentNode.className == "lazzy-time-minutes") {
+                } else if (eventTag.parentNode.className == "lazy-time-minutes") {
                     
                     // 二次代理
-                    if  (eventTag.className == "lazzy-top-triangle") {
+                    if  (eventTag.className == "lazy-top-triangle") {
 
                         // 点击上三角，当小于59分钟的时候直接做操作，当等于59分钟的时候设置分钟为0分，并对小时进行加1操作
                         if (minutes < 59) {
@@ -429,7 +429,7 @@ function addDatePicker(event, classname){
 
                             inputArr[1].value = "00";
                         }
-                    } else if (eventTag.className == "lazzy-bottom-triangle") {
+                    } else if (eventTag.className == "lazy-bottom-triangle") {
 
                         // 点击下三角，当大于0分钟的时候直接做操作，当等于0分钟的时候设置分钟为59分，并对小时进行减1操作
                         if (minutes > 0) {
@@ -448,10 +448,10 @@ function addDatePicker(event, classname){
                             inputArr[1].value = "59";
                         }
                     }
-                } else if (eventTag.parentNode.className == "lazzy-time-seconds") {
+                } else if (eventTag.parentNode.className == "lazy-time-seconds") {
                     
                     // 二次代理
-                    if  (eventTag.className == "lazzy-top-triangle") {
+                    if  (eventTag.className == "lazy-top-triangle") {
 
                         // 点击上三角，当小于59秒钟的时候直接做操作，当等于59秒钟的时候设置秒钟为0分，并对分钟进行加1操作
                         if (seconds < 59) {
@@ -477,7 +477,7 @@ function addDatePicker(event, classname){
 
                             inputArr[2].value = "00";
                         }
-                    } else if (eventTag.className == "lazzy-bottom-triangle") {
+                    } else if (eventTag.className == "lazy-bottom-triangle") {
 
                         // 点击下三角，当大于200毫秒钟的时候直接做操作，当等于0秒钟的时候设置秒钟为59分，并对分钟进行减1操作
                         if (seconds > 0) {
@@ -547,7 +547,7 @@ function addDatePicker(event, classname){
                 // 设置checkOut返回一个数字，如果为1则日期加1天，-1则减一天，0则不修改日期
 
                 // 连续触发change事件时（取消前一个定时器）延迟更新（存储的时间）
-                if (showDataPicker.info.getClock) {
+                if (typeof showDataPicker.info.getClock() !== "undefined") {
                     clearTimeout(showDataPicker.info.getClock());
                 }
 
@@ -555,7 +555,7 @@ function addDatePicker(event, classname){
                 checkOut(event);
 
                 // checkOut();处理完的2秒后更新（存储的时间）
-                // 设置200毫秒后执行时为了避免用户连续修改造成无效更改的情况
+                // 设置200毫秒后执行时为了避免用户连续修改造成无意义更改的情况
                 clock = setTimeout(setTimeOutHandler,200);
 
                 // 将该定时器存储为showDataPicker函数的属性
@@ -607,9 +607,9 @@ function addDatePicker(event, classname){
 
             // 切换顶部年月显示文本
             function toggleTopText(state) {
-                var datePicker = document.getElementById("lazzy-date-picker"),
-                    year = gClass("lazzy-year",datePicker)[0],
-                    span = gClass("lazzy-date-text",year)[0],
+                var datePicker = document.getElementById("lazy-date-picker"),
+                    year = gClass("lazy-year",datePicker)[0],
+                    span = gClass("lazy-date-text",year)[0],
                     chosenDate = showDataPicker.info.getChosenDate(),
                     str;
 
@@ -639,13 +639,13 @@ function addDatePicker(event, classname){
             function toggleMonthDisplay(state) {
 
                 if (state == "show") {
-                    weekeday.className = "lazzy-weekeday lazzy-hidden";               
-                    day.className = "lazzy-day lazzy-hidden";               
-                    month.className = "lazzy-month";               
+                    weekeday.className = "lazy-weekeday lazy-hidden";               
+                    day.className = "lazy-day lazy-hidden";               
+                    month.className = "lazy-month";               
                 } else if (state == "hide") {
-                    month.className = "lazzy-month lazzy-hidden"; 
-                    weekeday.className = "lazzy-weekeday"; 
-                    day.className = "lazzy-day";               
+                    month.className = "lazy-month lazy-hidden"; 
+                    weekeday.className = "lazy-weekeday"; 
+                    day.className = "lazy-day";               
                 }
             }
 
@@ -681,9 +681,9 @@ function addDatePicker(event, classname){
 
         // 根据当前时间初始化日期选择器
         initThePicker = function initThePicker(pickerName, targetEle) {
-            var datePicker = document.getElementById("lazzy-date-picker"),
+            var datePicker = document.getElementById("lazy-date-picker"),
                 theTime, // 初始化日期选择器的时间
-                lazzyYear, lazzyMonth, lazzyTime, spanArr, inputArr,
+                lazyYear, lazyMonth, lazyTime, spanArr, inputArr,
                 str;
 
             // 如果传入了pickerName，则使用addDatePicker.dates中pickerName对应日期选择器中存储的chosenDate
@@ -695,8 +695,8 @@ function addDatePicker(event, classname){
             } 
 
             // 初始化顶部年月
-            lazzyYear = gClass("lazzy-year")[0];
-            spanArr = gTag("span",lazzyYear);
+            lazyYear = gClass("lazy-year")[0];
+            spanArr = gTag("span",lazyYear);
             str = formatMonth(theTime);
             spanArr[0].innerHTML = str;
 
@@ -708,15 +708,15 @@ function addDatePicker(event, classname){
             initTheDays();
 
             // 初始化时间部分
-            lazzyTime = gClass("lazzy-time")[0];
-            inputArr = gTag("input",lazzyTime);
+            lazyTime = gClass("lazy-time")[0];
+            inputArr = gTag("input",lazyTime);
             inputArr[0].value = (theTime.getHours() < 10) ? ("0" + theTime.getHours()) : theTime.getHours();
             inputArr[1].value = (theTime.getMinutes() < 10) ? ("0" + theTime.getMinutes()) : theTime.getMinutes();
             inputArr[2].value = (theTime.getSeconds() < 10) ? ("0" + theTime.getSeconds()) : theTime.getSeconds();
             
             // 如果上次隐藏时日期选择器展示的是月份视图，则触发一次顶部年月的单击事件，展示日期视图
-            lazzyMonth = gClass("lazzy-month")[0];
-            if (lazzyMonth.className == "lazzy-month") {
+            lazyMonth = gClass("lazy-month")[0];
+            if (lazyMonth.className == "lazy-month") {
                 spanArr[0].click();         // 触发了一次真正的click事件，而不是简单的调用onclick的方法。
             }
 
@@ -734,7 +734,7 @@ function addDatePicker(event, classname){
         // 根据调用函数的对象来确定日期选择器的位置
         locationThePicker = function locationThePicker(bindTag) {
             var rect = bindTag.getBoundingClientRect(),
-                datePicker = document.getElementById("lazzy-date-picker"),
+                datePicker = document.getElementById("lazy-date-picker"),
                 getScrollOffsets, // 一个辅助函数
                 scroll, top, left, str;
 
@@ -777,16 +777,16 @@ function addDatePicker(event, classname){
 
         // 让生成的日期选择器可见
         showThePicker = function showThePicker() {
-            var datePicker = document.getElementById("lazzy-date-picker");
+            var datePicker = document.getElementById("lazy-date-picker");
             datePicker.className = "";
         }
 
         // 根据日期控件存放的日期来刷新月份列表的显示情况
         // 允许传入一个可选的日期对象参数，如果传入参数，则用传入的日期初始化
         initTheMonths = function initTheMonths(date) {
-            var datePicker = document.getElementById("lazzy-date-picker"),
-                lazzyMonth = gClass("lazzy-month")[0],
-                liArr = gTag("li",lazzyMonth),
+            var datePicker = document.getElementById("lazy-date-picker"),
+                lazyMonth = gClass("lazy-month")[0],
+                liArr = gTag("li",lazyMonth),
                 date = date || showDataPicker.info.getChosenDate(),
                 today = new Date(),
                 i;
@@ -798,12 +798,12 @@ function addDatePicker(event, classname){
 
             // 如果被存储的日期的年份和当天的年份是同一年（当月在当前视图内）
             if (date.getFullYear() === today.getFullYear()) {
-                liArr[today.getMonth()].className = "lazzy-current";
+                liArr[today.getMonth()].className = "lazy-current";
             }
 
             // 给选中日期对应的月份增加样式
             // 可以直接把当月的样式覆盖掉，因为两者样式重叠也只能显示被选中的样式
-            liArr[date.getMonth()].className = "lazzy-chosen";
+            liArr[date.getMonth()].className = "lazy-chosen";
         }
 
         // 根据日期控件存放的日期来刷新当前视图的日期显示情况,如果是当月还给当天增加样式
@@ -812,7 +812,7 @@ function addDatePicker(event, classname){
             var today = new Date(),
                 date = date || showDataPicker.info.getChosenDate(), 
                 lastDays, nextDays, //视图中上个月与下个月的天数
-                lazzyDay, liArr,spanArr, //需要操作的DOM元素
+                lazyDay, liArr,spanArr, //需要操作的DOM元素
                 getDaysInMonth, getTheLastDayOfLastMonth, getTheWeekedayOfFirstDay, // 3个辅助函数
                 firstWeekday, lastDay, currentDays, 
                 len, i, j;
@@ -851,9 +851,9 @@ function addDatePicker(event, classname){
 
             // 确保存储的日期和初始化的日期一致
             // showDataPicker.info.setChosenDate(date);
-            lazzyDay = gClass("lazzy-day")[0];
-            liArr = gTag("li",lazzyDay);
-            spanArr = gTag("span",lazzyDay);
+            lazyDay = gClass("lazy-day")[0];
+            liArr = gTag("li",lazyDay);
+            spanArr = gTag("span",lazyDay);
 
             // 如果该月第一天为周一，则第一行均为上个月的日期，
             if (firstWeekday === 0) {
@@ -866,7 +866,7 @@ function addDatePicker(event, classname){
             j = lastDay - lastDays + 1;
             //给上个月的日期增加样式并输出日期
             for (i = 0; i < len; i += 1) {
-                liArr[i].className = "lazzy-last-month";
+                liArr[i].className = "lazy-last-month";
                 spanArr[i].innerHTML = j++;
             }
 
@@ -881,22 +881,22 @@ function addDatePicker(event, classname){
 
             // 如果被存储的日期的月份和当天的月份是同一个月（当天在当前视图内）
             if (date.getMonth() === today.getMonth()) {
-                liArr[today.getDate() + lastDays - 1].className = "lazzy-current";
+                liArr[today.getDate() + lastDays - 1].className = "lazy-current";
             }
 
             // 可以直接把当天的样式覆盖掉，因为两者样式重叠也只能显示被选中的样式
-            liArr[date.getDate() + lastDays - 1].className = "lazzy-chosen";
+            liArr[date.getDate() + lastDays - 1].className = "lazy-chosen";
 
             len = 42;//总共7*6=42天
             j = 1;
             for (/*空语句*/; i < len; i += 1) {
-                liArr[i].className = "lazzy-next-month";
+                liArr[i].className = "lazy-next-month";
                 spanArr[i].innerHTML = j++;
             }
         }
 
         // 如果没有创建过日期选择器，则创建日期控件以及给日期控件绑定事件处理函数
-        if (!document.getElementById("lazzy-date-picker")) {
+        if (!document.getElementById("lazy-date-picker")) {
 
             // 创建日期控件
             createThePicker();
@@ -924,7 +924,7 @@ function addDatePicker(event, classname){
         var event = event || window.event,          
             x = event.clientX,      // 获得鼠标事件的x坐标
             y = event.clientY,      // 获得鼠标事件的y坐标
-            datePicker = document.getElementById("lazzy-date-picker"),
+            datePicker = document.getElementById("lazy-date-picker"),
             pickerMap = addDatePicker.dates.getPickerMap(),   // 获得目标元素和日期选择器之间的映射
             currentPicker = addDatePicker.dates.getCurrentPicker(),   // 当前激活状态的日期选择器
             currentInputArea, datePickerArea,    // 元素的位置区域
@@ -970,8 +970,8 @@ function addDatePicker(event, classname){
                 // 隐藏日期选择器之前，将被选中时间的日期对象存入addDatePicker.dates
                 addDatePicker.dates.setTheChosenDate(chosenDate, currentPicker);
 
-                // 添加类名"lazzy-hidden"，实现隐藏效果
-                datePicker.className = "lazzy-hidden";
+                // 添加类名"lazy-hidden"，实现隐藏效果
+                datePicker.className = "lazy-hidden";
 
                 // 取消当前激活的日期选择器
                 addDatePicker.dates.setCurrentPicker("");
@@ -1159,7 +1159,7 @@ addDatePicker.dates = (function() {
         pickerMap = {},     // 键为input元素的编号（此处直接用根据类名获得的input元素类数组的下标），值为该日期选择器的pickerName
         currentPicker = "",      // 当前激活状态的日期选择器
         config = {
-            "readyonly": "readonly",
+            "readonly": "readonly",
             "style": "font-size:.5em;cursor:pointer;",
             "value": ""
         };            // 一些简单的配置，目前只有input的一些样式
