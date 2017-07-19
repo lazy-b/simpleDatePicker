@@ -8,12 +8,13 @@
 
 // 支持IE8+
 // 给input元素添加"lazzy-datePicker"类名即可实现将普通的input元素转换成带日期选择器的时间输入框
-// 在hideDatePicker函数中的第993~995行对目标函数的鼠标形状以及字体做了设置，同时在加载时清空了内容
+// 在addDatePicker.dates中的第1161~1165行对目标函数的鼠标形状以及字体做了设置，同时在加载时清空了内容
 function addDatePicker(event, classname){
     "use strict"
     var classname = classname || "lazzy-datePicker",
         gClass, gTag, addHandler, showDataPicker, hideDatePicker,  // 一些辅助函数 
-        targetArr, 
+        targetArr,
+        config,                 // 一点配置文件
         i;  
 
     // 通过类名查找DOM对象（单个类名）
@@ -478,7 +479,7 @@ function addDatePicker(event, classname){
                         }
                     } else if (eventTag.className == "lazzy-bottom-triangle") {
 
-                        // 点击下三角，当大于1秒钟的时候直接做操作，当等于0秒钟的时候设置秒钟为59分，并对分钟进行减1操作
+                        // 点击下三角，当大于200毫秒钟的时候直接做操作，当等于0秒钟的时候设置秒钟为59分，并对分钟进行减1操作
                         if (seconds > 0) {
                             seconds -= 1;
                             inputArr[2].value = (seconds < 10) ? ("0" + seconds) : seconds;
@@ -512,13 +513,13 @@ function addDatePicker(event, classname){
                     initTheDays(chosenDate);
                 }
 
-                // 对点击事件处理完的2秒后更新（存储的时间）
-                // 设置1秒后执行时为了避免用户连续点击造成频繁更改的情况
+                // 对点击事件处理完的200毫秒后更新（存储的时间）
+                // 设置200毫秒后执行时为了避免用户连续点击造成频繁更改的情况
                 // 对time对象的任意单击事件都会触发该定时器，但是我认为这点性能损耗影响不大
                 // 通过匿名函数封装，给setTimeOutHandler传入参数
                 clock = setTimeout(function(){
                     setTimeOutHandler(effectDates);
-                },1000);
+                },200);
 
                 // 将该定时器存储为showDataPicker函数的属性
                 showDataPicker.info.setClock(clock);
@@ -554,8 +555,8 @@ function addDatePicker(event, classname){
                 checkOut(event);
 
                 // checkOut();处理完的2秒后更新（存储的时间）
-                // 设置1秒后执行时为了避免用户连续修改造成无效更改的情况
-                clock = setTimeout(setTimeOutHandler,1000);
+                // 设置200毫秒后执行时为了避免用户连续修改造成无效更改的情况
+                clock = setTimeout(setTimeOutHandler,200);
 
                 // 将该定时器存储为showDataPicker函数的属性
                 showDataPicker.info.setClock(clock);
@@ -658,7 +659,12 @@ function addDatePicker(event, classname){
                     seconds = parseInt(inputArr[2].value,0),
                     chosenDate = showDataPicker.info.getChosenDate(), // 获得日期对象（存储的时间）
                     oDate; // 原始存储的“日”
-
+                    
+                // 由于事件绑定有点混乱，此处取到的值仍然有可能是非法值，故在此处对于非法值修正为0
+                hours = isNaN(hours) ? 0 : hours; 
+                minutes = isNaN(minutes) ? 0 : minutes;
+                seconds = isNaN(seconds) ? 0 : seconds;
+                
                 chosenDate.setHours(hours);
                 chosenDate.setMinutes(minutes);
                 chosenDate.setSeconds(seconds);
@@ -989,10 +995,11 @@ function addDatePicker(event, classname){
 
     // 给对应的目标绑定激活日期选择器功能
     for (i = 0; i < targetArr.length; i += 1) {
+        config = addDatePicker.dates.getConfig();
         // 设置目标为只读，同时设置一些样式
-        targetArr[i].setAttribute("readonly","readonly");
-        targetArr[i].setAttribute("style","font-size:.5em;cursor:pointer;");
-        targetArr[i].setAttribute("value","");
+        targetArr[i].setAttribute("readonly",config["readonly"]);
+        targetArr[i].setAttribute("style",config["style"]);
+        targetArr[i].setAttribute("value",config["value"]);
 
         (function(i){
             addHandler(targetArr[i], "focus", function(event) {
@@ -1150,8 +1157,13 @@ function addDatePicker(event, classname){
 addDatePicker.dates = (function() {
     var chosenDates = [],   // 一个日期选择器的pickerName对应一个被选中时间的日期对象
         pickerMap = {},     // 键为input元素的编号（此处直接用根据类名获得的input元素类数组的下标），值为该日期选择器的pickerName
-        currentPicker = "";      // 当前激活状态的日期选择器
-
+        currentPicker = "",      // 当前激活状态的日期选择器
+        config = {
+            "readyonly": "readonly",
+            "style": "font-size:.5em;cursor:pointer;",
+            "value": ""
+        };            // 一些简单的配置，目前只有input的一些样式
+        
     return {
         // 如果有被选中日期对象，则返回该对象的复制对象，否则返回函数被调用时间的日期对象
         getTheChosenDate: function(name) {
@@ -1193,6 +1205,11 @@ addDatePicker.dates = (function() {
         // 设置当前激活的日期选择器
         setCurrentPicker: function(datePickerName) {
             currentPicker = datePickerName;
+        },
+        
+        // 获得配置文件
+        getConfig: function() {
+            return config;
         }
     };
 }());
