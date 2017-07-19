@@ -8,7 +8,7 @@
 
 // 支持IE8+
 // 给input元素添加"lazzy-datePicker"类名即可实现将普通的input元素转换成带日期选择器的时间输入框
-// 在第982~984行对目标函数的鼠标形状以及字体做了设置，同时在加载时清空了内容
+// 在hideDatePicker函数中的第993~995行对目标函数的鼠标形状以及字体做了设置，同时在加载时清空了内容
 function addDatePicker(event, classname){
     "use strict"
     var classname = classname || "lazzy-datePicker",
@@ -955,7 +955,8 @@ function addDatePicker(event, classname){
             }
 
             datePickerArea = datePicker.getBoundingClientRect();
-
+            
+            // 用户点击了日期选择器和目标输入框之外的区域时，隐藏日期选择器
             if (!isInArea(x, y, currentInputArea) && !isInArea(x, y, datePickerArea)) {
                 // 获得用户选择的时间
                 chosenDate = showDataPicker.info.getChosenDate();
@@ -968,6 +969,16 @@ function addDatePicker(event, classname){
 
                 // 取消当前激活的日期选择器
                 addDatePicker.dates.setCurrentPicker("");
+                
+            // 用户点击了目标元素
+            // 因为前面的逻辑问题，对任意目标元素的单击都将触发日期选择器重新加载操作
+            // 所以在重载之前将开始选择的日期进行保存
+            } else if (isInArea(x, y, currentInputArea)) {
+                // 获得用户选择的时间
+                chosenDate = showDataPicker.info.getChosenDate();
+
+                // 重载日期选择器之前，将被选中时间的日期对象存入addDatePicker.dates
+                addDatePicker.dates.setTheChosenDate(chosenDate, currentPicker);
             }
 
             stopPro(event); //阻止冒泡
