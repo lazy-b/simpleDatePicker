@@ -3,7 +3,7 @@
  * @author: lazzy1993
  * @date: 2017-07-18
  * @copyright:  All rights reserved.
- * @website: http://lazzy1993.github.io/simpleDatePicker
+ * @website: http://lazy1993.github.io/simpleDatePicker
  */
 
 // 支持IE8+
